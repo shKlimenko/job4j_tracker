@@ -1,9 +1,9 @@
 package ru.job4j.tracker.oop;
 
 public class Error {
-    boolean active;
-    int status;
-    String message;
+    private boolean active;
+    private int status;
+    private String message;
 
     public Error() {
     }
@@ -24,8 +24,8 @@ public class Error {
     public static void main(String[] args) {
         Error err1 = new Error();
         Error fatalError = new Error(true, 999, "Привет от SKYNET");
-        Error criticalError = new Error(true, 17, "Сервер упал, поднимите обратно на стол");
-        Error anotherError = new Error(false, 2, "Ну, ничего страшного. Тяу тяу тяу тяу. (Простите, не удержался:)");
+        Error criticalError = new Error(true, 17, "Сервер упал, поднимите обратно на стол.");
+        Error anotherError = new Error(false, 2, "Ну, ничего страшного.");
         err1.printInfo();
         fatalError.printInfo();
         criticalError.printInfo();
