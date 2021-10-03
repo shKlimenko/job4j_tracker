@@ -30,13 +30,4 @@ public class Triangle {
         }
         return rsl;
     }
-
-    public static void main(String[] args) {
-        Point a = new Point(5, 0);
-        Point b = new Point(4, 1);
-        Point c = new Point(2, 6);
-        Triangle triangle = new Triangle(a, b, c);
-        double rsl = triangle.area();
-        System.out.println(rsl);
-    }
 }
