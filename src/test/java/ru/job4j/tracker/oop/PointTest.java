@@ -22,4 +22,20 @@ public class PointTest {
         double dist = a.distance(b);
         assertThat(dist, closeTo(4.0, 0.001));
     }
+
+    @Test
+    public void whenResult1dot732() {
+        Point x = new Point(1, 2, 3);
+        Point y = new Point(2, 3, 4);
+        double dist = x.distance3d(y);
+        assertThat(dist, closeTo(1.732, 0.001));
+    }
+
+    @Test
+    public void whenResult4dot472() {
+        Point x = new Point(5, 4, 7);
+        Point y = new Point(9, 4, 9);
+        double dist = x.distance3d(y);
+        assertThat(dist, closeTo(4.472, 0.001));
+    }
 }
