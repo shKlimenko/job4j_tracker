@@ -5,9 +5,6 @@ public class Tower {
     private String material;
     private boolean elevator;
 
-    public Tower() {
-    }
-
     public Tower(int floor, String material, boolean elevator) {
         this.floor = floor;
         this.material = material;
