@@ -18,22 +18,19 @@ public class Library {
         books[1] = aSoundOfThunder;
         books[2] = startingFromScratch;
         books[3] = iAmLegend;
-        for (int i = 0; i < books.length; i++) {
-            Book bk = books[i];
+        for (Book bk : books) {
             System.out.println(bk.getName() + " - " + bk.getPages() + " pages.");
         }
         swapBooks(books, 0, 3);
         System.out.println(System.lineSeparator() + "After swap books:"
                 + System.lineSeparator());
-        for (int i = 0; i < books.length; i++) {
-            Book bk = books[i];
+        for (Book bk : books) {
             System.out.println(bk.getName() + " - " + bk.getPages() + " pages.");
         }
         System.out.println(System.lineSeparator() + "Shown only \"Clean code\":"
                 + System.lineSeparator());
-        for (int i = 0; i < books.length; i++) {
-            Book bk = books[i];
-            if (bk.getName().equals("Clean code")) {
+        for (Book bk : books) {
+            if ("Clean code".equals(bk.getName())) {
                 System.out.println(bk.getName() + " - " + bk.getPages() + " pages.");
             }
         }
