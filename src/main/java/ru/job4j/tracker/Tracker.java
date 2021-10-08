@@ -1,6 +1,6 @@
 package ru.job4j.tracker;
 
-import ru.job4j.tracker.encapsulation.Product;
+import java.util.Arrays;
 
 public class Tracker {
     private final Item[] items = new Item[100];
@@ -26,28 +26,18 @@ public class Tracker {
     }
 
     public Item[] findAll() {
-        Item[] itemsWithoutNull = new Item[size];
-        for (int index = 0; index < size; index++) {
-            itemsWithoutNull[index] = items[index];
-        }
-        return itemsWithoutNull;
+        return Arrays.copyOf(items, size);
     }
 
     public Item[] findByName(String key) {
-        Item[] itemsWithNamesLikeKey = new Item[size];
+        Item[] itemsWithKeyNames = new Item[size];
+        int count = 0;
         for (int index = 0; index < size; index++) {
             if (key.equals(items[index].getName())) {
-                itemsWithNamesLikeKey[index] = items[index];
+                itemsWithKeyNames[index] = items[index];
+                count++;
             }
         }
-        return itemsWithNamesLikeKey;
-    }
-
-    public static Item[] delete(Item[] items, int index) {
-        for (int i = index; i < items.length - 1; i++) {
-            items[i] = items[i + 1];
-        }
-        items[items.length - 1] = null;
-        return items;
+        return Arrays.copyOf(itemsWithKeyNames, count);
     }
 }
