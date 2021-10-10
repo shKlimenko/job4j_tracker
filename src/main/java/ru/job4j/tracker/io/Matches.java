@@ -17,7 +17,7 @@ public class Matches {
                 count -= matches;
                 System.out.println(count > -1 ? ("На столе осталось спичек: " + count)
                         : ("Вы забрали все  спички"));
-                System.out.println(count > -1 ? ("Очередь следующего игрока.")
+                System.out.println(count > 0 ? ("Очередь следующего игрока.")
                         : ("Игра окончена"));
             } else {
                 System.out.println("Вы выбрали неверное число, переход хода");
