@@ -1,6 +1,7 @@
 package ru.job4j.tracker.oop2;
 
 public class Aircraft implements Vehicle {
+
     @Override
     public void move() {
         System.out.println(getClass().getSimpleName() + " летит по небу.");

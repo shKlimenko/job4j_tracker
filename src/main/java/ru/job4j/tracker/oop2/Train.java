@@ -1,9 +1,10 @@
 package ru.job4j.tracker.oop2;
 
 public class Train implements Vehicle {
+
     @Override
     public void move() {
-        System.out.println(getClass().getSimpleName() + " едит по рельсам.");
+        System.out.println(getClass().getSimpleName() + " едет по рельсам.");
     }
 
     @Override
