@@ -6,6 +6,7 @@ public class Bus implements Transport {
 
     @Override
     public void drive() {
+        boolean drive;
     }
 
     @Override
