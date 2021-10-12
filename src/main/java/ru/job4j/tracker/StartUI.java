@@ -85,8 +85,6 @@ public class StartUI {
                 StartUI.findItemById(input, tracker);
             } else if (select == 5) {
                 StartUI.findItemByName(input, tracker);
-            } else if (select != 6) {
-                System.out.println("Пользователь выбрал: " + select);
             } else {
                 run = false;
             }
