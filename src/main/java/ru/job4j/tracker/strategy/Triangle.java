@@ -1,7 +1,6 @@
 package ru.job4j.tracker.strategy;
 
 public class Triangle implements Shape {
-
     @Override
     public String draw() {
         String ln = System.lineSeparator();
@@ -13,4 +12,5 @@ public class Triangle implements Shape {
     public static void main(String[] args) {
         System.out.println(new Triangle().draw());
     }
+
 }

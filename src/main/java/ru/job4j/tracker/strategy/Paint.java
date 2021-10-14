@@ -1,7 +1,6 @@
 package ru.job4j.tracker.strategy;
 
 public class Paint {
-
     public void draw(Shape shape) {
         System.out.print(shape.draw());
     }
@@ -10,5 +9,6 @@ public class Paint {
         Paint context = new Paint();
         context.draw(new Triangle());
         context.draw(new Square());
+
     }
 }
