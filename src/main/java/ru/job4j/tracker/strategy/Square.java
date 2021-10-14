@@ -12,9 +12,6 @@ public class Square implements Shape {
     }
 
     public static void main(String[] args) {
-        //System.out.println(new Square().draw());
-        Square square = new Square();
-        String a = square.draw();
-        System.out.println(a);
+        System.out.println(new Square().draw());
     }
 }
