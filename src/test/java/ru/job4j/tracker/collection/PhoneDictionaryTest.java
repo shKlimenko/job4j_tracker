@@ -30,4 +30,17 @@ public class PhoneDictionaryTest {
         assertThat(persons.get(0).getSurname(), is("Arsentev"));
         assertThat(persons.get(1).getSurname(), is("Klimenko"));
     }
+
+    @Test
+    public void whenFoundNone() {
+        PhoneDictionary phones = new PhoneDictionary();
+        phones.add(
+                new Person("Petr", "Arsentev", "534872", "Bryansk")
+        );
+        phones.add(
+                new Person("Alexey", "Klimenko", "534872", "Shakhty")
+        );
+        ArrayList<Person> persons = phones.find("Moscow");
+        assertThat(persons.size(), is(0));
+    }
 }
