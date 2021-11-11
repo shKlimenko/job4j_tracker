@@ -18,7 +18,7 @@ public class MaxTest {
         int left = 7;
         int middle = 4;
         int right = 6;
-        int result = Max.max(left,middle,  right);
+        int result = Max.max(left, middle,  right);
         int expected = 7;
         Assert.assertEquals(result, expected);
     }

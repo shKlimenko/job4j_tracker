@@ -19,7 +19,8 @@ public class Matches {
                     System.out.println("На столе осталось спичек: " + count);
                 }
             } else {
-                System.out.println("Вы выбрали неверное число, пожалуйста, введите число от 1 до 3:");
+                System.out.println("Вы выбрали неверное число, пожалуйста, "
+                        + "введите число от 1 до 3:");
             }
         }
         if (!turn) {
