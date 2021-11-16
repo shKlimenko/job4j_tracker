@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
+import static java.util.Arrays.asList;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
@@ -13,12 +14,12 @@ public class NotifyAccountTest {
 
     @Test
     public void sent() {
-        List<Account> accounts = Arrays.asList(
+        List<Account> accounts = asList(
                 new Account("123", "Petr Arsentev", "eDer3432f"),
                 new Account("142", "Petr Arsentev", "000001")
         );
         HashSet<Account> expect = new HashSet<>(
-                Arrays.asList(
+                asList(
                         new Account("123", "Petr Arsentev", "eDer3432f"),
                         new Account("142", "Petr Arsentev", "000001")
                 )
@@ -28,12 +29,12 @@ public class NotifyAccountTest {
 
     @Test
     public void whenSentIteration() {
-        List<Account> accounts = Arrays.asList(
+        List<Account> accounts = asList(
                 new Account("123", "Petr Arsentev", "eDer3432f"),
                 new Account("123", "Petr Arsentev", "eDer3432f")
                 );
         HashSet<Account> expect = new HashSet<>(
-                Arrays.asList(
+                asList(
                         new Account("123", "Petr Arsentev", "eDer3432f")
                 )
         );
@@ -42,13 +43,13 @@ public class NotifyAccountTest {
 
     @Test
     public void whenSentAnotherIteration() {
-        List<Account> accounts = Arrays.asList(
+        List<Account> accounts = asList(
                 new Account("123", "Petr Arsentev", "eDer3432f"),
                 new Account("142", "Petr Arsentev", "000001"),
                 new Account("123", "Petr Arsentev", "eDer3432f")
         );
         HashSet<Account> expect = new HashSet<>(
-                Arrays.asList(
+                asList(
                         new Account("123", "Petr Arsentev", "eDer3432f"),
                         new Account("142", "Petr Arsentev", "000001")
                 )
