@@ -1,5 +1,6 @@
 package ru.job4j.tracker.collection;
 
+import org.hamcrest.Matchers;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -36,5 +37,15 @@ public class OrderConvertTest {
         orders.add(new Order("a4y7", "Hat"));
         HashMap<String, Order> map = OrderConvert.process(orders);
         assertThat(map.get("a4y7"), is(new Order("a4y7", "Hat")));
+    }
+
+    @Test
+    public void whenMapIsLessThanList() {
+        List<Order> orders = new ArrayList<>();
+        orders.add(new Order("3sfe", "Dress"));
+        orders.add(new Order("a4y7", "Hat"));
+        orders.add(new Order("a4y7", "Hat"));
+        HashMap<String, Order> map = OrderConvert.process(orders);
+        assertThat(map.size(), Matchers.lessThan(orders.size()));
     }
 }
