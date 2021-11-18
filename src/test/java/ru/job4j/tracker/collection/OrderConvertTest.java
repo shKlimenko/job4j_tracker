@@ -38,4 +38,14 @@ public class OrderConvertTest {
         HashMap<String, Order> map = OrderConvert.process(orders);
         assertThat(map.get("a4y7"), is(new Order("a4y7", "Hat")));
     }
+
+    @Test
+    public void whenMapIsLessThanList() {
+        List<Order> orders = new ArrayList<>();
+        orders.add(new Order("3sfe", "Dress"));
+        orders.add(new Order("a4y7", "Hat"));
+        orders.add(new Order("a4y7", "Hat"));
+        HashMap<String, Order> map = OrderConvert.process(orders);
+        assertThat(map.size(), Matchers.lessThan(orders.size()));
+    }
 }
