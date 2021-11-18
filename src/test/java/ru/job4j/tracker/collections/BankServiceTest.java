@@ -15,6 +15,16 @@ public class BankServiceTest {
     }
 
     @Test
+    public void addUserWhenUserAlreadyExist() {
+        User user = new User("3434", "Petr Arsentev");
+        User user2 = new User("3434", "Petr Arsentev");
+        BankService bank = new BankService();
+        bank.addUser(user);
+        bank.addUser(user2);
+        assertThat(bank.size(), is(1));
+    }
+
+    @Test
     public void whenEnterInvalidPassport() {
         User user = new User("3434", "Petr Arsentev");
         BankService bank = new BankService();

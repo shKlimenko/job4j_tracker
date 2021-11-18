@@ -8,6 +8,10 @@ import java.util.Map;
 public class BankService {
     private final Map<User, List<Account>> users = new HashMap<>();
 
+    public int size() {
+        return users.size();
+    }
+
     public void addUser(User user) {
         users.putIfAbsent(user, new ArrayList<Account>());
     }
