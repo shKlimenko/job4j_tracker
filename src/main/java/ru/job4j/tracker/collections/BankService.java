@@ -18,7 +18,8 @@ public class BankService {
 
     public void addAccount(String passport, Account account) {
         User foundUser = findByPassport(passport);
-        if (foundUser != null && users.containsKey(foundUser)) {
+        if (foundUser != null && users.containsKey(foundUser)
+                && !users.get(foundUser).contains(account)) {
             users.get(foundUser).add(account);
         }
     }
@@ -48,7 +49,7 @@ public class BankService {
                                  String destPassport, String destRequisite, double amount) {
         Account srcAccount = findByRequisite(srcPassport, srcRequisite);
         Account destAccount = findByRequisite(destPassport, destRequisite);
-        if (srcAccount == null || srcAccount.getBalance() < amount) {
+        if (srcAccount == null || srcAccount.getBalance() < amount || destAccount == null) {
             return false;
         }
         srcAccount.setBalance(srcAccount.getBalance() - amount);
