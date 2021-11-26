@@ -30,4 +30,11 @@ public class DepartmentsTest {
         List<String> result = Departments.fillGaps(input);
         assertThat(result, is(expect));
     }
+
+    @Test
+    public void whenSortAscDepartments() {
+        List<String> input = Arrays.asList("k2/sk1", "k1");
+        Departments.sortAsc(input);
+        assertThat(input, is(Arrays.asList("k1", "k2/sk1")));
+    }
 }
