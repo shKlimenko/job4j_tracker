@@ -24,10 +24,10 @@ public class PhoneDictionary {
     }
 
     public ArrayList<Person> findWhithPredicate(String key) {
-        Predicate<Person> predName = p -> p.getName().equals(key);
-        Predicate<Person> predSurname = p -> p.getSurname().equals(key);
-        Predicate<Person> predPhone = p -> p.getPhone().equals(key);
-        Predicate<Person> predAddress = p -> p.getAddress().equals(key);
+        Predicate<Person> predName = p -> p.getName().contains(key);
+        Predicate<Person> predSurname = p -> p.getSurname().contains(key);
+        Predicate<Person> predPhone = p -> p.getPhone().contains(key);
+        Predicate<Person> predAddress = p -> p.getAddress().contains(key);
 
         Predicate<Person> combine = predName.or(predSurname).or(predPhone).or(predAddress);
         ArrayList<Person> result = new ArrayList<>();
