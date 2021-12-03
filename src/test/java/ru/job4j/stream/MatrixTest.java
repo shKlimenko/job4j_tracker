@@ -8,6 +8,7 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
 public class MatrixTest {
+
     @Test
     public void convertMatrixToList() {
         Integer[][] input = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Matrix {
+
     public List<Integer> matrixToList(Integer[][] intArray) {
         return Arrays.stream(intArray)
                 .flatMap(Arrays::stream)
