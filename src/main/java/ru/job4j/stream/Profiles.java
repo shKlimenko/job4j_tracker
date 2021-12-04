@@ -13,9 +13,9 @@ public class Profiles {
 
     public List<Address> collectWithSort(List<Profile> profiles) {
         return profiles.stream()
-                .sorted(Comparator.comparing(el -> el.getAddress().getCity()))
-                .distinct()
                 .map(Profile::getAddress)
+                .sorted(Comparator.comparing(el -> el.getCity()))
+                .distinct()
                 .collect(Collectors.toList());
     }
 }
