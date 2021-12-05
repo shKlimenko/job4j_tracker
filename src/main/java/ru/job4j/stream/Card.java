@@ -15,7 +15,15 @@ public class Card {
     public static void main(String[] args) {
         Stream.of(Suit.values())
                 .flatMap(st -> Stream.of(Value.values())
-                        .map(vl -> st + " " + vl))
+                        .map(vl -> new Card(st, vl)))
                 .forEach(System.out::println);
+    }
+
+    @Override
+    public String toString() {
+        return "Card{"
+                + "suit=" + suit
+                + ", value=" + value
+                + '}';
     }
 }
