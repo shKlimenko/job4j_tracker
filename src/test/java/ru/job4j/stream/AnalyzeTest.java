@@ -29,7 +29,7 @@ public class AnalyzeTest {
     }
 
     @Test
-    public void whenListOfPupilAverage() {
+    public void whenListOfSubjectAverage() {
         List<Tuple> average = Analyze.averageScoreBySubject(
                 List.of(
                         new Pupil("Ivanov", List.of(new Subject("Math", 100),
@@ -45,7 +45,7 @@ public class AnalyzeTest {
     }
 
     @Test
-    public void whenListOfSubjectAverage() {
+    public void whenListOfPupilAverage() {
         List<Tuple> average = Analyze.averageScoreByPupil(
                 List.of(
                         new Pupil("Ivanov",
