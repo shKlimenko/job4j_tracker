@@ -3,6 +3,7 @@ package ru.job4j.stream;
 import java.util.List;
 
 public class Pupil {
+
     private String name;
     private List<Subject> subjects;
 

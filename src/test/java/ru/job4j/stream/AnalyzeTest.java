@@ -6,7 +6,6 @@ import org.junit.Test;
 import java.util.List;
 
 public class AnalyzeTest {
-
     @Test
     public void whenSinglePupil() {
         double average = Analyze.averageScore(
