@@ -5,7 +5,7 @@ import java.util.List;
 public class SingleTracker {
     static private SingleTracker instance = null;
 
-    private Tracker tracker = new Tracker();
+    private MemTracker tracker = new MemTracker();
 
     private SingleTracker() {
     }
