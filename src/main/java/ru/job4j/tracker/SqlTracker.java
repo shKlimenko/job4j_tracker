@@ -56,7 +56,9 @@ public class SqlTracker implements Store, AutoCloseable {
     @Override
     public boolean replace(int id, Item item) {
         boolean result = false;
-        String sqlQuerry = String.format("update items set name = ?, created = ? where id = %d", id);
+        String sqlQuerry = String.format(
+                "update items set name = ?, created = ? where id = %d", id
+        );
         try (PreparedStatement statement = cn.prepareStatement(sqlQuerry)) {
             statement.setString(1, item.getName());
             statement.setTimestamp(2, Timestamp.valueOf(item.getCreated()));
