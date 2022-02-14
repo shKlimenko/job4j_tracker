@@ -42,9 +42,9 @@ public class SqlTracker implements Store, AutoCloseable {
             statement.setString(1, item.getName());
             statement.setTimestamp(2, Timestamp.valueOf(item.getCreated()));
             statement.execute();
-            try (ResultSet generattedKeys = statement.getGeneratedKeys()) {
-                if (generattedKeys.next()) {
-                    item.setId(generattedKeys.getInt(1));
+            try (ResultSet resultSet = statement.getGeneratedKeys()) {
+                if (resultSet.next()) {
+                    item.setId(resultSet.getInt(1));
                 }
             }
         } catch (SQLException throwables) {
@@ -55,12 +55,28 @@ public class SqlTracker implements Store, AutoCloseable {
 
     @Override
     public boolean replace(int id, Item item) {
-        return false;
+        boolean result = false;
+        String sqlQuerry = String.format("update items set name = ?, created = ? where id = %d", id);
+        try (PreparedStatement statement = cn.prepareStatement(sqlQuerry)) {
+            statement.setString(1, item.getName());
+            statement.setTimestamp(2, Timestamp.valueOf(item.getCreated()));
+            result = statement.executeUpdate() > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
     @Override
     public boolean delete(int id) {
-        return false;
+        boolean result = false;
+        String sqlQuerry = String.format("delete from items where id = %d", id);
+        try (PreparedStatement statement = cn.prepareStatement(sqlQuerry)) {
+            result = statement.executeUpdate() > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
     @Override
@@ -71,7 +87,8 @@ public class SqlTracker implements Store, AutoCloseable {
                 while (resultSet.next()) {
                     items.add(new Item(
                             resultSet.getInt("id"),
-                            resultSet.getString("name")
+                            resultSet.getString("name"),
+                            resultSet.getTimestamp("created").toLocalDateTime()
                     ));
                 }
             }
@@ -90,7 +107,8 @@ public class SqlTracker implements Store, AutoCloseable {
                 while (resultSet.next()) {
                     items.add(new Item(
                             resultSet.getInt("id"),
-                            resultSet.getString("name")
+                            resultSet.getString("name"),
+                            resultSet.getTimestamp("created").toLocalDateTime()
                     ));
                 }
             }
@@ -109,7 +127,7 @@ public class SqlTracker implements Store, AutoCloseable {
                 while (resultSet.next()) {
                     item.setId(resultSet.getInt("id"));
                     item.setName(resultSet.getString("name"));
-
+                    item.setCreated(resultSet.getTimestamp("created").toLocalDateTime());
                 }
             }
         } catch (Exception e) {
