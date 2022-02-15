@@ -63,7 +63,7 @@ public class Item implements Comparable<Item> {
         return name.compareTo(o.name);
     }
 
-    @Override
+    /* @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -78,5 +78,23 @@ public class Item implements Comparable<Item> {
     @Override
     public int hashCode() {
         return Objects.hash(id, name);
+    } */
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Item item = (Item) o;
+        return id == item.id && Objects.equals(name, item.name)
+                && Objects.equals(created.withNano(0), item.created.withNano(0));
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, created);
     }
 }
