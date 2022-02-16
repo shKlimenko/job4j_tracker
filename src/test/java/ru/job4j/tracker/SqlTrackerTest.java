@@ -70,4 +70,41 @@ public class SqlTrackerTest {
         assertTrue(tracker.replace(item.getId(), rItem));
         assertThat(tracker.findById(item.getId()).getName(), is(rItem.getName()));
     }
+
+    @Test
+    public void whenDeleteItemMustBeTrue() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item item = new Item("item");
+        tracker.add(item);
+        assertTrue(tracker.delete(item.getId()));
+    }
+
+    @Test
+    public void whenFindAllReturnsAll() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item item = new Item("item");
+        Item rItem = new Item("zimbabwe");
+        tracker.add(item);
+        tracker.add(rItem);
+        assertThat(tracker.findAll(), is(List.of(item, rItem)));
+    }
+
+    @Test
+    public void whenFindByNameReturnsItem() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item item = new Item("item");
+        tracker.add(item);
+        assertThat(tracker.findByName("item"), is(List.of(item)));
+    }
+
+    @Test
+    public void whenFindByIDReturnsItem() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item item = new Item("item");
+        Item rItem = new Item("zimbabwe");
+        tracker.add(item);
+        tracker.add(rItem);
+        assertThat(tracker.findById(item.getId()), is(item));
+        assertThat(tracker.findById(rItem.getId()), is(rItem));
+    }
 }
