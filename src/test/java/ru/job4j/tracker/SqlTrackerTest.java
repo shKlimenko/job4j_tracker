@@ -93,8 +93,14 @@ public class SqlTrackerTest {
     public void whenFindByNameReturnsItem() {
         SqlTracker tracker = new SqlTracker(connection);
         Item item = new Item("item");
+        Item item2 = new Item("item");
+        Item item3 = new Item("Nikaragua");
+        Item item4 = new Item("item");
         tracker.add(item);
-        assertThat(tracker.findByName("item"), is(List.of(item)));
+        tracker.add(item2);
+        tracker.add(item3);
+        tracker.add(item4);
+        assertThat(tracker.findByName("item"), is(List.of(item, item2, item4)));
     }
 
     @Test
