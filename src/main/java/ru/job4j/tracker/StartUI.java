@@ -32,9 +32,25 @@ public class StartUI {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         Output output = new ConsoleOutput();
         Input input = new ValidateInput(output, new ConsoleInput());
+
+        MemTracker tracker = new MemTracker();
+            List<UserAction> actions = List.of(
+                    new CreateAction(output),
+                    new EditAction(output),
+                    new DeleteAction(output),
+                    new ShowAllAction(output),
+                    new FindItemByIdAction(output),
+                    new FindItemByNameAction(output),
+                    new ExitAction(),
+                    new CreateForGCAction(output),
+                    new DeleteForGCAction(output)
+            );
+            new StartUI(output).init(input, tracker, actions);
+
+        /*          ===  for sqltracker ===
         try (SqlTracker tracker = new SqlTracker()) {
             tracker.init();
             List<UserAction> actions = List.of(
@@ -49,6 +65,6 @@ public class StartUI {
             new StartUI(output).init(input, tracker, actions);
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        } */
     }
 }
